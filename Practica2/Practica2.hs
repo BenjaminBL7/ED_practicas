@@ -54,9 +54,18 @@ esDescendente x y z w =
 
 {-
 - Función: imc
-Bw/H
+Descripción: Utiliza metros y kilogramos.
+Uso: imc "peso en kg" "altura en metros"
 -}
 
-imc :: Int -> Int -> IO()
-imc x =
-  if x
+imc :: Float -> Float -> IO()
+imc x y = 
+  if (x / (y * y)) > 30
+  then putStrLn "Obsesidad"
+  else
+    if (x / (y * y)) >= 25
+    then putStrLn "Sobrepeso"
+    else
+      if (x / (y * y)) >= 18.5
+      then putStrLn "Normal" 
+      else putStrLn "Bajo" 
