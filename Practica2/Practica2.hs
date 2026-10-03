@@ -1,3 +1,21 @@
+{-
+Función: cuadradoFloat
+Descripción: da el cuadrado de un número
+Uso: cuadrado "número"
+-}
+
+cuadradoFloat :: Float -> Float
+cuadradoFloat x = x * x
+
+{-
+Función: cuadradoInt
+Descripción: da el cuadrado de un Int
+Uso: cuadrado "número"
+-}
+
+cuadradoInt :: Int -> Int
+cuadradoInt x = x * x
+
 {- Función: recorvension
 Descripción : elimina tres ceros al numero ingresado
 Uso: reconversion 34000 -> 34
@@ -54,7 +72,7 @@ esDescendente x y z w =
 
 {-
 - Función: imc
-Descripción: Utiliza metros y kilogramos.
+Descripción: Utiliza metros y kilogramos para determinar la categiría dentro de la que cae el imc de alguien.
 Uso: imc "peso en kg" "altura en metros"
 -}
 
@@ -68,4 +86,45 @@ imc x y =
     else
       if (x / (y * y)) >= 18.5
       then putStrLn "Normal" 
-      else putStrLn "Bajo" 
+      else putStrLn "Bajo"
+
+-- Tratando de usar guardias:
+-- imc :: Float -> Float -> IO()
+-- imc x y = putStrLn 
+--         | z > 30 = "Obsesidad"
+--         | z >= 25 = "Sobrepeso"
+--         | z >= 18.5 = "Normal"
+--         | z < 18.5 = "Bajo"
+--   where z = (x / (y * y))
+          
+
+{-
+- Función: hipotenusa
+Descripción: recibe dos valores de tipo flotante y te da la hipotenusa.
+Uso: hipotenusa "base" "altura"
+-}
+
+hipotenusa :: Float -> Float -> Float
+hipotenusa b h = sqrt ((b * b) + (h * h))
+
+{-
+- Función: pendiente
+-}
+
+--Primera versión:
+-- pendiente :: (Float, Float) -> (Float, Float) -> Float
+-- pendiente (x1,x2) (y1,y2) = ((y2 - y1) / (x2 - x1))
+
+-- Versión menos desagradable a la vista (?):
+pendiente :: (Float, Float) -> (Float, Float) -> Float
+pendiente (x1,y1) (x2,y2) =
+  let w = y2 - y1; r = x2 - x1;
+  in w / r
+
+{-
+- Función: distanciaPuntos
+-}
+distanciaPuntos :: (Float, Float) -> (Float, Float) -> Float
+distanciaPuntos (x1,y1) (x2,y2) =
+  let w = (x2 - x1); r = (y2 - y1);
+  in sqrt ((cuadradoFloat w) + (cuadradoFloat r))
