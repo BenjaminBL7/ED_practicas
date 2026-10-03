@@ -7,15 +7,6 @@ Uso: cuadrado "número"
 cuadradoFloat :: Float -> Float
 cuadradoFloat x = x * x
 
-{-
-Función: cuadradoInt
-Descripción: da el cuadrado de un Int
-Uso: cuadrado "número"
--}
-
-cuadradoInt :: Int -> Int
-cuadradoInt x = x * x
-
 {- Función: recorvension
 Descripción : elimina tres ceros al numero ingresado
 Uso: reconversion 34000 -> 34
@@ -59,11 +50,31 @@ minutosHoras x =
   else if (mod x 60) == 1
        then putStrLn (show (div x 60) ++ " hora y " ++ show (mod x 60) ++ " minuto")
        else putStrLn (show (div x 60) ++ " hora y " ++ show (mod x 60) ++ " minutos")
+
+{-
+- Función: esEstafa
+Descripción: No entiendo exáctamente qué es lo que hace el 0 en el ejemplo que se encuentra en las instrucciones de la práctica. Suponiendo que al final de la transacción le regresas al cliente el billete que originalmente te había dado, esta función te dice si fuiste estafado o no. El primer valor a ingresar es el costo del producto, el segundo es el primer pago, el tercero es el cambio y el cuarto es el segundo pago.
+
+El dinero con el que el vendedor se tiene que quedar debe ser, por lo menos, el mismo que el producto cuesta. Si este dinero es menor, entonces se ha sufrido una estafa. La sección "((pago1 - cambio + pago2))" determina lo que se ha ganado hasta que se da el segundo pago. Al resultado de esto se le resta el "pago1", pues esto respresenta el hecho de que se le regresa el pago original. Te dirá que sí se trata de una estafa cuando el total de la transacción es menor al costo del producto.
+
+Uso: esEstafa "costo del producto" "primer pago" "cambio" "segundo pago"
+Ejemplo para True: esEstafa 100 200 100 100
+Ejemplo para False: esEstafa 30 50 20 50
+
+
+-}
+
+esEstafa :: Int -> Int -> Int -> Int -> Bool
+esEstafa costo pago1 cambio pago2 =
+  if ((pago1 - cambio + pago2)) - pago1 >= costo
+        then False
+        else True
   
 {-
 - Función: esDescendente
+Descripción: Verifica que tres enteros hayan sido ingresados en orden descendente.
+Uso: esDescendente "x" "y" "z" "w"
 -}
-
 esDescendente :: Int -> Int -> Int -> Int -> Bool
 esDescendente x y z w =
   if (x > y && y > z) && z > w
