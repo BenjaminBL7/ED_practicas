@@ -55,13 +55,11 @@ minutosHoras x =
 - Función: esEstafa
 Descripción: No entiendo exáctamente qué es lo que hace el 0 en el ejemplo que se encuentra en las instrucciones de la práctica. Suponiendo que al final de la transacción le regresas al cliente el billete que originalmente te había dado, esta función te dice si fuiste estafado o no. El primer valor a ingresar es el costo del producto, el segundo es el primer pago, el tercero es el cambio y el cuarto es el segundo pago.
 
-El dinero con el que el vendedor se tiene que quedar debe ser, por lo menos, el mismo que el producto cuesta. Si este dinero es menor, entonces se ha sufrido una estafa. La sección "((pago1 - cambio + pago2))" determina lo que se ha ganado hasta que se da el segundo pago. Al resultado de esto se le resta el "pago1", pues esto respresenta el hecho de que se le regresa el pago original. Te dirá que sí se trata de una estafa cuando el total de la transacción es menor al costo del producto.
+El dinero con el que el vendedor se tiene que quedar debe ser, por lo menos, el mismo que el producto cuesta. Si este dinero es menor, entonces se ha sufrido una estafa. Te dirá que sí se trata de una estafa cuando el total de la transacción es menor al costo del producto.
 
-Uso: esEstafa "costo del producto" "primer pago" "cambio" "segundo pago"
-Ejemplo para True: esEstafa 100 200 100 100
-Ejemplo para False: esEstafa 30 50 20 50
-
-
+Uso: esEstafa "costo del producto" "pago" "cambio" "dinero regreseado por el cliente"
+Ejemplo para True: esEstafa 100 200 100 0
+Ejemplo para False: esEstafa 100 200 100 100 
 -}
 
 
@@ -70,7 +68,7 @@ esEstafa costo pago cambio regreso =
         if pago - cambio + regreso - costo < costo
         then True
         else False
--- Se le resta el costo pues esto representa 
+
   
 {-
 - Función: esDescendente
