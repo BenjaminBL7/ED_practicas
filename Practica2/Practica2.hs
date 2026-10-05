@@ -64,11 +64,13 @@ Ejemplo para False: esEstafa 30 50 20 50
 
 -}
 
+
 esEstafa :: Int -> Int -> Int -> Int -> Bool
-esEstafa costo pago1 cambio pago2 =
-  if ((pago1 - cambio + pago2)) - pago1 >= costo
-        then False
-        else True
+esEstafa costo pago cambio regreso =
+        if pago - cambio + regreso - costo < costo
+        then True
+        else False
+-- Se le resta el costo pues esto representa 
   
 {-
 - Función: esDescendente
@@ -134,6 +136,7 @@ pendiente (x1,y1) (x2,y2) =
 
 {-
 - Función: distanciaPuntos
+
 -}
 distanciaPuntos :: (Float, Float) -> (Float, Float) -> Float
 distanciaPuntos (x1,y1) (x2,y2) =
