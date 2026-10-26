@@ -29,14 +29,15 @@ mensajeCetes x (Dias y)
      | otherwise = putStrLn "No se admite este plazo de tiempo o esta cantidad de dinero"
      where z = (cetes x (Dias y))
 
-recNegativos :: [Int] -> Int
-recNegativos (x:xs) = if x < 0
-  then 1 + (recNegativos xs)
-  else recNegativos xs
-recNegativos [] = 0
-
 negativos :: [Int] -> Int
 negativos (xs) = length [x | x <- xs, x < 0]
 
 soloPares :: [Int] -> [Int]
 soloPares xs = [x | x <- xs, esParBin x == True]
+
+primos :: [Int] -> [Int]
+primos xs = [x | x <- xs, x > 1, all (noEsDivisor x) [2..x-1]]
+  -- where [y | y <- Int, (y < x) == True && (y == 1 || y == 0) == False]
+
+coprimos :: Int -> [Int]
+coprimos x = [y | y <- [1..x], (interseccion (divisoresDe x) (divisoresDe y)) == [1]]
