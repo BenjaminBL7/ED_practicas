@@ -1,5 +1,6 @@
--- module Auxiliar (sumaEnt) where
+module Auxiliar (Entero(..), sumaEnt) where
 
+----------- Funciones para enteros-------------------
 
 data Entero = Zero | Succ Entero | Neg Entero deriving (Eq, Show)
 
@@ -18,11 +19,7 @@ sumaEnt (Succ x) (Neg y)
   | otherwise = Neg(restaEnt y x)
 
 
--- {- Falta
--- - Si el positivo es mayor
--- - Si el negativo es mayor
--- - Si ambos son negativos
--- -}
+  
 
 restaEnt :: Entero -> Entero -> Entero
 restaEnt Zero (Succ x) = (Neg (Succ x))
@@ -42,9 +39,9 @@ restaEnt (Neg x) (Succ y)
   | igualQueEnt x (Succ y) == True = Zero
   | otherwise = Neg(sumaEnt x (Succ y))
 
-{- Función auxiliar mayorQueEnt
-Descripción: Recibe dos números enteros e indica si el primero es mayor que el segundo o no
-Uso: mayorQueEnt (Succ(Succ(Zero))) (Neg(Succ(Zero))) = True 
+{- Función auxiliar igualQueEnt
+Descripción: recibe dos enteros y te dice si son el mismo o no.
+Uso = (Neg(Succ Zero)) (Succ Zero) = False
 -}
 
 igualQueEnt :: Entero -> Entero -> Bool
@@ -55,6 +52,11 @@ igualQueEnt (Neg x) (Succ y) = False
 igualQueEnt (Succ x) (Neg y) = False
 igualQueEnt (Succ x) (Succ y) = igualQueEnt x y
 igualQueEnt (Neg (Succ x)) (Neg (Succ y)) = igualQueEnt x y
+
+{- Función auxiliar mayorQueEnt
+Descripción: Recibe dos números enteros e indica si el primero es mayor que el segundo o no
+Uso: mayorQueEnt (Succ(Succ(Zero))) (Neg(Succ(Zero))) = True 
+-}
 
 mayorQueEnt :: Entero -> Entero -> Bool
 mayorQueEnt Zero (Succ x) = False
