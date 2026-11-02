@@ -1,7 +1,5 @@
 module Auxiliar (Entero(..), sumaEnt) where
 
------------ Funciones para enteros-------------------
-
 data Entero = Zero | Succ Entero | Neg Entero deriving (Eq, Show)
 
 {- Función sumaEnt

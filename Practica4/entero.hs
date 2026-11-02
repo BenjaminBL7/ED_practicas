@@ -1,5 +1,10 @@
 import Auxiliar
 
+{- Función multEnt
+Descripción: recibe dos numeros Enteros (los cuales se definen en Auxiliar.hs) y multiplica el primer por el segundo. El resultado será otro número entero.
+
+Uso: multEnt (Succ(Succ Zero)) (Succ(Succ Zero)) = Succ (Succ (Succ (Succ Zero)))
+-}
 
 multEnt :: Entero -> Entero -> Entero
 multEnt Zero x = Zero
