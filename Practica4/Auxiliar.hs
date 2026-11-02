@@ -4,6 +4,11 @@ module Auxiliar (Entero(..), sumaEnt) where
 
 data Entero = Zero | Succ Entero | Neg Entero deriving (Eq, Show)
 
+{- Función sumaEnt
+Descripción: toma dos números enteros y los suma. El resultado es otro número entero
+Uso: sumaEnt (Neg(Succ(Succ Zero))) (Succ Zero) = Neg (Succ Zero)
+-}
+
 sumaEnt :: Entero -> Entero -> Entero
 sumaEnt Zero x = x
 sumaEnt x Zero = x
@@ -19,7 +24,10 @@ sumaEnt (Succ x) (Neg y)
   | otherwise = Neg(restaEnt y x)
 
 
-  
+{- Función restaEnt
+Descripción: toma el primer número entero que recibe y le resta el segundo. El resultado es otro número entero
+Uso: restaEnt (Neg(Succ(Succ Zero))) (Succ Zero) = Neg (Succ (Succ (Succ Zero)))
+-}  
 
 restaEnt :: Entero -> Entero -> Entero
 restaEnt Zero (Succ x) = (Neg (Succ x))
@@ -33,8 +41,6 @@ restaEnt (Neg x) (Neg y)
   | (igualQueEnt x y) == True = Zero
   | (mayorQueEnt (Neg x) (Neg y)) == True = restaEnt x y
   | otherwise = sumaEnt x y
-  -- | (mayorQueEnt (Succ x) (Succ y)) == False && (igualQueEnt (Succ x) (Succ y)) == False = Neg(restaEnt x y)
-  -- | otherwise = Neg(sumaEnt x y)
 restaEnt (Neg x) (Succ y)
   | igualQueEnt x (Succ y) == True = Zero
   | otherwise = Neg(sumaEnt x (Succ y))
